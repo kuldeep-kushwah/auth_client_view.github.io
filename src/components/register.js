@@ -37,8 +37,9 @@ function Register(){
     return (
         <div>
             
-           <h1>Register</h1>
-                  <form onSubmit={register}>
+           
+                <form onSubmit={register}>
+                  <h4>Register</h4>
                 <input type="text" placeholder='name' value={name} onChange={(e)=>{setname(e.target.value)}}/> <br />
                 <input type="text" placeholder='username' value={username} onChange={(e)=>{setusername(e.target.value)}}/> <br />
                 <input type="text" placeholder='password' value={password} onChange={(e)=>{setpassword(e.target.value)}}/> <br />
