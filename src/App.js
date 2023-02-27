@@ -11,15 +11,16 @@ import Form from './components/form'
 
 function App() {
   const navigate=useNavigate();
+
   const [user,setUser]=useState(false);
-  
+  console.log(user);
   return (
     <div className="App">
            
           
           <Routes>
-            <Route exact path="/" element={<Form setUser={setUser} />}></Route>
-            <Route exact path="/dashboard" element={user?<Dashboard/>:<Navigate to="/" />}></Route>
+            <Route exact path="/login" element={<Form setUser={setUser} />}></Route>
+            <Route exact path="/" element={<Dashboard user={user}/>}></Route>
           </Routes>
       
      

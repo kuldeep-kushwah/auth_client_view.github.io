@@ -1,9 +1,10 @@
 import React,{useState} from 'react';
 import {Link} from 'react-router-dom';
+import swal from 'sweetalert';
 
 import axios from 'axios';
 
-function Register(){
+function Register({setRegister}){
     const[name,setname]=useState('');
     const[username,setusername]=useState('');
     const[password,setpassword]=useState('');
@@ -24,14 +25,29 @@ function Register(){
       
       axios.post('/api/user/register',user)
       .then(res=>{
-        //console.log(res);
-        alert(res.data);
+
+
+        if(res.data=="user already exist!")
+        swal({
+          title:"User already exist!",
+          icon:"warning",
+         })
+         else
+        swal({
+          title:"you have been successfully registeredhena!",
+          icon:"success",
+         })
+      
+        setRegister(false);
+         //window.open("http://localhost:3000/","_self");
+
       })
       .catch(err=>console.log('there is erron while connection api '+err)) 
 
       setname('');
       setusername('');
       setpassword('');
+
     }
 
     return (
@@ -43,7 +59,7 @@ function Register(){
                 <input type="text" placeholder='name' value={name} onChange={(e)=>{setname(e.target.value)}}/> <br />
                 <input type="text" placeholder='username' value={username} onChange={(e)=>{setusername(e.target.value)}}/> <br />
                 <input type="text" placeholder='password' value={password} onChange={(e)=>{setpassword(e.target.value)}}/> <br />
-               <input type="submit" />
+               <button className="submit bt" onClick={register}>submit</button>
                  </form>
       </div>
     )
