@@ -31,10 +31,9 @@ function Login({setUser,setRegister}){
        navigate("/");
        
        swal({
-        title:"you have benn successfully logged in",
+        title:"you have been successfully logged in",
         icon:"success",
        })
-
         console.log(res);
        setUser(true);
        
